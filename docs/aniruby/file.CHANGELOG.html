@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: CHANGELOG
+  
+    &mdash; Documentation by YARD 0.9.34
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "CHANGELOG";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: CHANGELOG</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="changelog">Changelog</h1>
+
+<p>All notable changes to this project will be documented in this file.</p>
+
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+
+<h2 id="unreleased">Unreleased</h2>
+
+<h2 id="section">0.2.1 - 2023-09-07</h2>
+
+<h3 id="fixed">Fixed</h3>
+
+<ul>
+  <li><strong>Important</strong>: in v0.2.0 one of the notable changes is that the instance variable <code>current_frame</code> was changed to <code>position</code>, following that there was
+the need to change every use of <code>@current_frame</code> to <code>@position</code>, however
+since I wasn’t thorough enough I forgot to do that in the <code>Animation#draw</code> and <code>Animation#draw_rot</code>
+methods, effectively rendering them useless.</li>
+  <li><strong>Important</strong>: There was a error in <code>Animation#done?</code> too, where it’ll return <code>false</code> always  <br />
+independently of if the animation was finished, this was because I forgot to add a <code>return</code> in
+the condition check for the <code>true</code>.</li>
+  <li><code>Animation#update</code> now resets the animation, instead of <code>Animation#draw</code><br />
+or <code>Animation#draw_rot</code> (I know, that sounds counterintuitive). This (I think) fixes a precision problem when drawing the last frame
+of an animation, in the which it was drawn for less time than required.</li>
+</ul>
+
+<h2 id="section-1">0.2.0 - 2023-09-02</h2>
+
+<p>This release brings mostly improvements and fixes, however there’s not that much
+new features yet.</p>
+
+<h3 id="added">Added</h3>
+
+<ul>
+  <li>aliased <code>Animation#width</code> and <code>Animation#height</code> to <code>w</code> and <code>h</code> respectively, the same was done
+for <code>Frame</code>.</li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+  <li><code>Animation#get_current_frame</code> is now <code>Animation#current_frame</code> as to not be redundant. Following that now <code>Animation#current_frame</code>(The accessor for the instance variable) is renamed to <code>Animation#position</code>.</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+
+<ul>
+  <li>Previously methods like <code>Animation#pause?</code> or <code>Animation#resume</code> didn’t return <code>self</code>, so it wasn’t possible to chaint them like this
+<code>ruby
+# Example
+my_animation.pause.resume.duration(200)
+</code>
+now they do so you can do that.</li>
+</ul>
+
+<h2 id="section-2">0.1.3 - 2023-08-22</h2>
+
+<h3 id="fixed-2">Fixed</h3>
+
+<ul>
+  <li>Undefined method error in animation, when using <code>size</code> on <code>AniRuby::Frames</code>, now
+use <code>Enumerable#count</code> instead.</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+
+<ul>
+  <li>The way milliseconds are used as duration, before you’ll have to use whole numbers
+(1000 is a second, 500 half a second and so on), now we can just use floats for that (1.0 as a second, 0.5 half a second and so on).</li>
+</ul>
+
+<h2 id="section-3">0.1.2 - 2023-08-20</h2>
+
+<h3 id="changed-2">Changed</h3>
+
+<ul>
+  <li>Downcased the gem name in the gemspec.</li>
+</ul>
+
+<h2 id="section-4">0.1.1 - 2023-08-20</h2>
+
+<h3 id="added-1">Added</h3>
+
+<ul>
+  <li>Add .yardopts to included files.</li>
+</ul>
+
+<h3 id="fixed-3">Fixed</h3>
+
+<ul>
+  <li>Required ruby not being used correctly in gemspec.</li>
+</ul>
+
+<h2 id="section-5">0.1.0 - 2023-08-20</h2>
+
+<p>Initial release.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Fri Sep  8 21:36:39 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.34 (ruby-3.2.1).
+</div>
+
+    </div>
+  </body>
+</html>
