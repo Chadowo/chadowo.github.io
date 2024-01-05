@@ -7,13 +7,13 @@ author: Chadow
 ---
 
 {: .box-note}
-:**Note:** This project is still experimental so it may be *unstable*.
+**Note:** This project is still experimental so it may be *unstable*.
 
 ## Exporting Your Gosu Game
 
 To get started, I'll give you some context: you've finished your game, using the [Gosu](https://www.libgosu.org/) game framework. And now
 want it so other people can play, right? Well you'll get to see it's not so easy to do with, since
-your game is tied to the Ruby interpreter, and it's not a compiled language (ie. C or Rust), this makes
+your game is tied to the Ruby interpreter, and it's not a compiled language (e.g. C or Rust), this makes
 so it you need for your players to install Ruby in their PC, and run your code. That's really unconvenient
 and I'd say almost nobody will install a programming language's interpreter to run a game, unless it's a really
 nice one (case on point: Minecraft).
