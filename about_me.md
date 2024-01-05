@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About me
+title: About Me
 subtitle: Some tidbits of info
 ---
 
@@ -12,11 +12,11 @@ And as of recently I'm curious about [Lisp](https://en.wikipedia.org/wiki/Lisp)!
 ## Games
 
 - [Asteritos](https://chadow.itch.io/asteritos)  
-    Asteroids clone made for the 5th Gosu Game Jam. 
+    > Asteroids clone made for the 5th Gosu Game Jam. 
 
 ## Projects/Libraries
 
 - [Gosu MRuby Wrapper](https://github.com/Chadowo/gosu-mruby-wrapper)  
-    Wrapper around Gosu and MRuby to run Gosu games natively on desktop platforms.
+    > Wrapper around Gosu and MRuby to run Gosu games natively on desktop platforms.
 - [AniRuby](https://github.com/Chadowo/aniruby)  
-    Make sprite animations on Gosu, simply and easily.
+    > Make sprite animations on Gosu, simply and easily.
