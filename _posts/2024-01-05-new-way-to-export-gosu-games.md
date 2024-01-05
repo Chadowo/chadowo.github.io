@@ -27,8 +27,8 @@ a bigger binary size, considering you pack the whole runtime in your binary, thi
 
 [MRuby](https://mruby.org/) is the "lightweight implementation of the Ruby language complying with part of the ISO standard. mruby can
 be linked and embedded within your application.". That means that much like [Lua](https://www.lua.org/) we can embed MRuby into our own
-application and use it as a scripting language, without having to install the big runtime of CRuby (The de-facto Ruby implementation, and
-the one you're probably used to). 
+application and use it as a scripting language, without having to install the big CRuby runtime (The de-facto Ruby implementation, and
+the one you're probably using). 
 
 Ok, so how do we use it to export a game? Well, firstly we'll need a way to use Gosu from MRuby itself, and lucky for us someone has already done
 that, in the form of a mgem (equivalent of a gem for MRuby, it's not so much like a gem since MRuby has no package manager whatsoever): [mruby-gosu](https://github.com/cyberarm/mruby-gosu) by Cyberarm. Then what's left is integrating all of this onto an app!
