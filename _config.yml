@@ -1,2 +1,12 @@
+title: Chadow's Personal Page
+author: Chadow
+
+navbar-links:
+  About Me: "about_me"
+
+social-network-links:
+  rss: true 
+  github: chadowo
+
 remote_theme: daattali/beautiful-jekyll@6.0.1
 
