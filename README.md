@@ -1,7 +1,3 @@
 # chadowo.github.io
 
-Fooling around with GH Pages (TODO: Maybe theme this site?)
-
-## What's here
-
-- Generated YARD docs for [aniruby](https://github.com/Chadowo/aniruby) gem under https://chadowo.github.io/docs/aniruby
+This is my personal website, made using GitHub Pages. The theme is [Beatiful Jekyll](https://github.com/daattali/beautiful-jekyll).
