@@ -31,7 +31,9 @@ application and use it as a scripting language, without having to install the bi
 the one you're probably using). 
 
 Ok, so how do we use it to export a game? Well, firstly we'll need a way to use Gosu from MRuby itself, and lucky for us someone has already done
-that, in the form of a mgem (equivalent of a gem for MRuby, it's not so much like a gem since MRuby has no package manager whatsoever): [mruby-gosu](https://github.com/cyberarm/mruby-gosu) by Cyberarm. Then what's left is integrating all of this onto an app!
+that, in the form of a mgem (equivalent of a gem for MRuby, it's not so much like a gem since MRuby has no package manager whatsoever): [mruby-gosu](https://github.com/cyberarm/mruby-gosu) by Cyberarm. 
+
+Then what's left is integrating all of this together!
 
 ## My Wrapper
 
