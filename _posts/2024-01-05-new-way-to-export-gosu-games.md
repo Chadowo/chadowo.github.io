@@ -37,7 +37,7 @@ Then what's left is integrating all of this together!
 
 ## My Wrapper
 
-Following the previous points, I've made the [Gosu MRuby Wrapper](https://github.com/Chadowo/gosu-mruby-wrapper) (it's open-source), as the name implies it's a simple 
+Following the previous points, I've made the [Gosu MRuby Wrapper](https://github.com/Chadowo/gosu-mruby-wrapper), as the name implies it's a simple 
 wrapper for MRuby that runs with the mruby-gosu (and some others) mgems installed. Check [here](https://github.com/Chadowo/gosu-mruby-wrapper/wiki/Getting-Started)
 for instruction on usage. TLDR: 
 
