@@ -1,4 +1,3 @@
-# You're Seeing My Homepage!
+# chadowo.github.io
 
-I'm learning to program stuff (mostly games), some's good and some's not so good. You 
-are welcome to check it out :)
+This is my personal website, made using GitHub Pages. The theme is [Beatiful Jekyll](https://github.com/daattali/beautiful-jekyll).
