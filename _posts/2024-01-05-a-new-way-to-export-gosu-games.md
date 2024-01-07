@@ -6,7 +6,6 @@ tags: [programming]
 author: Chadow
 readtime: true
 last-updated: 2024-01-07
-social-share: true
 comments: true
 ---
 
