@@ -4,6 +4,8 @@ title: A New Way To Export Gosu Games
 subtitle: Running Natively with MRuby
 tags: [programming]
 author: Chadow
+readtime: true
+last-updated: 2024-01-07
 ---
 
 {: .box-note}
@@ -11,12 +13,11 @@ author: Chadow
 
 ## Exporting Your Gosu Game
 
-To get started, I'll give you some context: you've finished your game, using the [Gosu](https://www.libgosu.org/) game framework. And now
-want it so other people can play, right? Well you'll get to see it's not so easy to do with, since
+To get started, I'll give you some context: you've finished your game, using the [Gosu](https://www.libgosu.org/) game framework, and now you want to distribute to the players, right? Well you'll get to see it's not an easy task, since
 your game is tied to the Ruby interpreter, and it's not a compiled language (e.g. C or Rust), this makes
-so it you need for your players to install Ruby in their PC, and run your code. That's really unconvenient
+ it so you need for your players to install Ruby in their PC, and run your code. That's really unconvenient
 and I'd say almost nobody will install a programming language's interpreter to run a game, unless it's a really
-nice one (case on point: Minecraft).
+nice one (case on point:Minecraft).
 
 There's a way, though, to release your game in a nice and simple binary for your players to run. And that is to 
 simply bundle the whole language runtime with your code, aka 'Freezing'. [Ocra](https://github.com/larsch/ocra) and its more active fork 
