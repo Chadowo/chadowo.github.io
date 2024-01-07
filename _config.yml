@@ -22,7 +22,7 @@ giscus:
   mapping: pathname
   reactions-enabled: 1
   emit-metadata: 0
-  theme: dark
+  theme: light
 
 remote_theme: daattali/beautiful-jekyll@6.0.1
 
