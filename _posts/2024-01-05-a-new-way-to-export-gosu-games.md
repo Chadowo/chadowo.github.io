@@ -3,10 +3,10 @@ layout: post
 title: A New Way To Export Gosu Games
 subtitle: Running Natively with MRuby
 tags: [programming]
-author: Chadow
+comments: true
 readtime: true
 last-updated: 2024-01-07
-comments: true
+author: Chadow
 ---
 
 {: .box-note}
