@@ -4,6 +4,20 @@ author: Chadow
 navbar-links:
   About Me: "about_me"
 
+share-links-active:
+  twitter: true
+  facebook: true
+  linkedin: true
+  vk: false
+
+title-on-all-pages: true
+
+excerpt_length: 50
+
+feed_show_excerpt: true
+
+post_search: true
+
 social-network-links:
   rss: true
   github: chadowo
