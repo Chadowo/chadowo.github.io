@@ -1,7 +1,12 @@
 title: Chadow's Personal Page
 author: Chadow
 
+plugins:
+  - jekyll-remote-theme
+
 navbar-links:
+  Home: "index"
+  Projects: "projects"
   About Me: "about_me"
 
 share-links-active:
