@@ -2,7 +2,7 @@
 layout: post
 title: A New Way To Export Gosu Games
 subtitle: Running Natively with MRuby
-tags: [programming]
+tags: [videogames, programming, ruby]
 comments: true
 readtime: true
 last-updated: 2024-01-07
