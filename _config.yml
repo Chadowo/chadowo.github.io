@@ -23,6 +23,8 @@ feed_show_excerpt: true
 
 post_search: true
 
+keywords: "programming,games,videogames,ruby"
+
 social-network-links:
   rss: true
   github: chadowo
