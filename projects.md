@@ -13,7 +13,7 @@ really primitive and kinda bad IMO, so it's not something I can proudly share (Î
 ---
 
 - [Asteritos](https://chadow.itch.io/asteritos)
-  > Asteroids clone made for the 5th Gosu Game Jam, also my first finished game! 
+  > Asteroids clone made for the [5th Gosu Game Jam](https://itch.io/jam/gosu-game-jam-5), also my first finished game! 
 - [Pong Taylor](https://github.com/chadowo/pong-taylor)
   > The classic pong recreated in the [Taylor game framework](https://github.com/HellRok/Taylor).
 - [Flappy Defold](https://chadow.itch.io/flappy-defold)
