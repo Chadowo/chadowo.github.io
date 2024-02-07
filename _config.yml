@@ -13,7 +13,7 @@ share-links-active:
   twitter: true
   facebook: true
   linkedin: true
-  vk: false
+  vk: true
 
 title-on-all-pages: true
 
@@ -29,6 +29,9 @@ social-network-links:
   rss: true
   github: chadowo
   itchio: chadow
+  gitlab: chadowo
+
+rss-description: Chadow's Personal Page
 
 exclude:
   - LICENSE
