@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-21T19:48:08-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chadow</title><subtitle></subtitle><author><name>Chadow</name></author><entry><title type="html">A New Way To Export Gosu Games</title><link href="http://localhost:4000/a-new-way-to-export-gosu-games" rel="alternate" type="text/html" title="A New Way To Export Gosu Games" /><published>2024-01-05T00:00:00-03:00</published><updated>2024-01-05T00:00:00-03:00</updated><id>http://localhost:4000/a-new-way-to-export-gosu-games</id><content type="html" xml:base="http://localhost:4000/a-new-way-to-export-gosu-games">&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This project is still experimental so it may be &lt;em&gt;unstable&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;exporting-your-gosu-game&quot;&gt;Exporting Your Gosu Game&lt;/h2&gt;
+
+&lt;p&gt;To get started, I’ll give you some context: you’ve finished your game, using the &lt;a href=&quot;https://www.libgosu.org/&quot;&gt;Gosu&lt;/a&gt; game framework, and now you want to distribute to the players, right? Well you’ll get to see it’s not an easy task, since
+your game is tied to the Ruby interpreter, and it’s not a compiled language (e.g. C or Rust), this makes
+ it so you need for your players to install Ruby in their PC, and run your code. That’s really unconvenient
+and I’d say almost nobody will install a programming language’s interpreter to run a game, unless it’s a really
+nice one (case on point:Minecraft).&lt;/p&gt;
+
+&lt;p&gt;There’s a way, though, to release your game in a nice and simple binary for your players to run. And that is to 
+simply bundle the whole language runtime with your code, aka ‘Freezing’. &lt;a href=&quot;https://github.com/larsch/ocra&quot;&gt;Ocra&lt;/a&gt; and its more active fork 
+&lt;a href=&quot;https://github.com/Largo/ocran&quot;&gt;Ocran&lt;/a&gt; are gems that do exactly that. However, using this approach will give you some over-head and 
+a bigger binary size, considering you pack the whole runtime in your binary, this is to be expected.&lt;/p&gt;
+
+&lt;h2 id=&quot;enters-mruby&quot;&gt;Enters MRuby&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mruby.org/&quot;&gt;MRuby&lt;/a&gt; is the “lightweight implementation of the Ruby language complying with part of the ISO standard. mruby can
+be linked and embedded within your application.”. That means that much like &lt;a href=&quot;https://www.lua.org/&quot;&gt;Lua&lt;/a&gt; we can embed MRuby into our own
+application and use it as a scripting language, without having to install the big CRuby runtime (The de-facto Ruby implementation, and
+the one you’re probably using).&lt;/p&gt;
+
+&lt;p&gt;Ok, so how do we use it to export a game? Well, firstly we’ll need a way to use Gosu from MRuby itself, and lucky for us someone has already done
+that, in the form of a mgem (equivalent of a gem for MRuby, it’s not so much like a gem since MRuby has no package manager whatsoever): &lt;a href=&quot;https://github.com/cyberarm/mruby-gosu&quot;&gt;mruby-gosu&lt;/a&gt; by Cyberarm.&lt;/p&gt;
+
+&lt;p&gt;Then what’s left is integrating all of this together!&lt;/p&gt;
+
+&lt;h2 id=&quot;my-wrapper&quot;&gt;My Wrapper&lt;/h2&gt;
+
+&lt;p&gt;Following the previous points, I’ve made the &lt;a href=&quot;https://github.com/Chadowo/gosu-mruby-wrapper&quot;&gt;Gosu MRuby Wrapper&lt;/a&gt;, as the name implies it’s a simple 
+wrapper for MRuby that runs with the mruby-gosu (and some others) mgems installed. Check &lt;a href=&quot;https://github.com/Chadowo/gosu-mruby-wrapper/wiki/Getting-Started&quot;&gt;here&lt;/a&gt;
+for instruction on usage. TLDR:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Run it as a command line utility:
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;    gosu-mruby my_code.rb
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Use a &lt;a href=&quot;https://github.com/Chadowo/gosu-mruby-wrapper/wiki/Getting-Started#boot-file&quot;&gt;boot&lt;/a&gt; file:
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;vg&quot;&gt;$:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;my_code_files/&apos;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Add the directory where all our code is to the load path&lt;/span&gt;
+
+   &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;main&apos;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# This will kickstart the main game-loop&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Chadowo/gosu-mruby-wrapper/wiki/Fused-Mode&quot;&gt;Embedding&lt;/a&gt; the source code directly into the executable. &lt;strong&gt;Warning:&lt;/strong&gt; experimental.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To showcase something, my game &lt;a href=&quot;https://chadow.itch.io/asteritos&quot;&gt;Asteritos&lt;/a&gt; is packaged with this wrapper.&lt;/p&gt;
+
+&lt;h2 id=&quot;moving-on&quot;&gt;Moving On&lt;/h2&gt;
+
+&lt;p&gt;I would like to make it more stable and easier to use. I should also develop something like &lt;a href=&quot;https://github.com/gosu/releasy&quot;&gt;Releasy&lt;/a&gt; so the process
+of exporting becomes far more easier.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this utility can be useful for someone.&lt;/p&gt;</content><author><name>Chadow</name></author><category term="programming" /><category term="games" /><summary type="html">Note: This project is still experimental so it may be unstable.</summary></entry></feed>

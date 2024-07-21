@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="html" data-theme="dark"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    
+      A New Way To Export Gosu Games
+    
+  </title>
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="A New Way To Export Gosu Games" />
+<meta name="author" content="Chadow" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Note: This project is still experimental so it may be unstable." />
+<meta property="og:description" content="Note: This project is still experimental so it may be unstable." />
+<link rel="canonical" href="http://localhost:4000/a-new-way-to-export-gosu-games" />
+<meta property="og:url" content="http://localhost:4000/a-new-way-to-export-gosu-games" />
+<meta property="og:site_name" content="Chadow" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-01-05T00:00:00-03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="A New Way To Export Gosu Games" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Chadow" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Chadow"},"dateModified":"2024-01-05T00:00:00-03:00","datePublished":"2024-01-05T00:00:00-03:00","description":"Note: This project is still experimental so it may be unstable.","headline":"A New Way To Export Gosu Games","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/a-new-way-to-export-gosu-games"},"url":"http://localhost:4000/a-new-way-to-export-gosu-games"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Chadow" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Favicon -->
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  
+</head>
+<body>
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">Go home...?</a>
+<h1 class="post-title">A New Way To Export Gosu Games</h1>
+<p class="post-date text-bold">
+  
+    <span class="text-upcase">Chadow</span> / 
+  
+  
+    <span class="text-upcase">January 2024</span>
+  
+
+
+  
+  
+  (328 Words, 
+  2 Minutes)
+  
+
+</p>
+
+
+  <div class="">
+    
+    <span class="tag">programming</span>
+    
+    <span class="tag">games</span>
+    
+  </div>
+
+
+<blockquote>
+  <p><strong>Note:</strong> This project is still experimental so it may be <em>unstable</em>.</p>
+</blockquote>
+
+<h2 id="exporting-your-gosu-game">Exporting Your Gosu Game</h2>
+
+<p>To get started, I’ll give you some context: you’ve finished your game, using the <a href="https://www.libgosu.org/">Gosu</a> game framework, and now you want to distribute to the players, right? Well you’ll get to see it’s not an easy task, since
+your game is tied to the Ruby interpreter, and it’s not a compiled language (e.g. C or Rust), this makes
+ it so you need for your players to install Ruby in their PC, and run your code. That’s really unconvenient
+and I’d say almost nobody will install a programming language’s interpreter to run a game, unless it’s a really
+nice one (case on point:Minecraft).</p>
+
+<p>There’s a way, though, to release your game in a nice and simple binary for your players to run. And that is to 
+simply bundle the whole language runtime with your code, aka ‘Freezing’. <a href="https://github.com/larsch/ocra">Ocra</a> and its more active fork 
+<a href="https://github.com/Largo/ocran">Ocran</a> are gems that do exactly that. However, using this approach will give you some over-head and 
+a bigger binary size, considering you pack the whole runtime in your binary, this is to be expected.</p>
+
+<h2 id="enters-mruby">Enters MRuby</h2>
+
+<p><a href="https://mruby.org/">MRuby</a> is the “lightweight implementation of the Ruby language complying with part of the ISO standard. mruby can
+be linked and embedded within your application.”. That means that much like <a href="https://www.lua.org/">Lua</a> we can embed MRuby into our own
+application and use it as a scripting language, without having to install the big CRuby runtime (The de-facto Ruby implementation, and
+the one you’re probably using).</p>
+
+<p>Ok, so how do we use it to export a game? Well, firstly we’ll need a way to use Gosu from MRuby itself, and lucky for us someone has already done
+that, in the form of a mgem (equivalent of a gem for MRuby, it’s not so much like a gem since MRuby has no package manager whatsoever): <a href="https://github.com/cyberarm/mruby-gosu">mruby-gosu</a> by Cyberarm.</p>
+
+<p>Then what’s left is integrating all of this together!</p>
+
+<h2 id="my-wrapper">My Wrapper</h2>
+
+<p>Following the previous points, I’ve made the <a href="https://github.com/Chadowo/gosu-mruby-wrapper">Gosu MRuby Wrapper</a>, as the name implies it’s a simple 
+wrapper for MRuby that runs with the mruby-gosu (and some others) mgems installed. Check <a href="https://github.com/Chadowo/gosu-mruby-wrapper/wiki/Getting-Started">here</a>
+for instruction on usage. TLDR:</p>
+
+<ul>
+  <li>Run it as a command line utility:
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">    gosu-mruby my_code.rb
+</span></code></pre></div>    </div>
+  </li>
+  <li>Use a <a href="https://github.com/Chadowo/gosu-mruby-wrapper/wiki/Getting-Started#boot-file">boot</a> file:
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="vg">$:</span> <span class="o">&lt;&lt;</span> <span class="s1">'my_code_files/'</span> <span class="c1"># Add the directory where all our code is to the load path</span>
+
+   <span class="nb">require</span> <span class="s1">'main'</span> <span class="c1"># This will kickstart the main game-loop</span>
+</code></pre></div>    </div>
+  </li>
+  <li><a href="https://github.com/Chadowo/gosu-mruby-wrapper/wiki/Fused-Mode">Embedding</a> the source code directly into the executable. <strong>Warning:</strong> experimental.</li>
+</ul>
+
+<p>To showcase something, my game <a href="https://chadow.itch.io/asteritos">Asteritos</a> is packaged with this wrapper.</p>
+
+<h2 id="moving-on">Moving On</h2>
+
+<p>I would like to make it more stable and easier to use. I should also develop something like <a href="https://github.com/gosu/releasy">Releasy</a> so the process
+of exporting becomes far more easier.</p>
+
+<p>Hopefully this utility can be useful for someone.</p>
+
+
+        
+        <div class="credits">&copy;&nbsp;2024&nbsp;Chadow
+          &nbsp;
+          •
+          &nbsp;Original Theme&nbsp; <a href="https://github.com/abhinavs/moonwalk" target="_blank" rel="noreferrer">Moonwalk</a>
+        </div>
+      </div>
+    </main><script async defer src="https://sdk.soopr.co/soopr.js"></script></body>
+</html>
