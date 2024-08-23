@@ -4,8 +4,8 @@ author: Chadow
 tags: [programming, games]
 ---
 
-> **Note** 
-> This project is still experimental so it may be *unstable*.
+> **Note**  
+> This project is still experimental so it may be **unstable**.
 
 ## Exporting Your Gosu Game
 
