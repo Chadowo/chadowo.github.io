@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Chadow
-tags: [programming, games]
+tags: [programming, videogames]
 ---
 
 > **Note**  
